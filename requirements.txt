@@ -1,0 +1,30 @@
+# Core
+python-dotenv==1.0.1
+
+# Data & CSV
+polars==1.7.1
+pandas==2.2.3
+
+# GitHub + HTTP
+requests==2.32.3
+
+# Postgres
+psycopg2-binary==2.9.10
+SQLAlchemy==2.0.36
+
+# LLM / Agentic
+langchain==0.3.7
+langchain-openai==0.2.6
+langgraph==0.2.39
+langchain-experimental==0.3.2
+
+# Streamlit frontend
+streamlit==1.39.0
+
+# Charts
+matplotlib==3.9.2
+plotly==5.24.1
+
+# Forecasting
+prophet==1.1.6
+statsmodels==0.14.4
