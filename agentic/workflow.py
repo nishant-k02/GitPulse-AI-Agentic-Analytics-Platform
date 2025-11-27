@@ -1,6 +1,8 @@
 from typing import List, TypedDict
 
 import re
+import os
+import glob
 
 import polars as pl
 import pandas as pd
@@ -25,6 +27,27 @@ You have access to a helper function:
 
 which returns a Polars DataFrame for a given SQL query.
 
+IMPORTANT DATAFRAME RULES (CRITICAL):
+
+1. `run_sql_pl` returns a **Polars DataFrame**.
+2. Immediately after **every** call to `run_sql_pl`, you MUST convert it
+   to a Pandas DataFrame:
+
+       df = run_sql_pl(...)
+       df = df.to_pandas()
+
+3. After that, do **all further processing in Pandas**, not Polars:
+   - Do NOT use `pl.col`, `df.with_columns`, or other Polars Expr APIs.
+   - You MAY use `.apply`, `.map`, `.pivot_table`, etc. on the Pandas DataFrame.
+
+Example pattern:
+
+    df = run_sql_pl(\"\"\"SELECT ...\"\"\")
+    df = df.to_pandas()
+    df["my_col"] = df["my_col"].astype(int)
+    pivot = df.pivot_table(...)
+    answer_str = pivot.to_markdown()
+
 The database contains:
 
 - repos(full_name, owner, name, stars, forks, open_issues, watchers, fetched_at)
@@ -43,16 +66,31 @@ When the user asks a question, you MUST:
    - import statsmodels.api as sm
    - from src.agentic.tools import run_sql_pl
 3. Use run_sql_pl() for all SQL queries.
-4. For text/table answers:
+4. You can write any additional helper functions inside the code, but:
+   - Do NOT include plain-English headings like "Query to get ..." as bare
+     statements. Only valid Python is allowed.
+   - Comments starting with "#" are allowed, but do not write markdown headings.
+5. For text/table answers:
    - build the final explanation or markdown table as a string in a variable named `answer_str`.
-5. For chart answers:
+6. For chart answers:
    - build a matplotlib chart
    - save it as 'chart.png' using: plt.savefig("chart.png", bbox_inches="tight")
+   - NEVER save to any other filename (do NOT use repo names in the filename,
+     do NOT save multiple PNG files).
    - also set `answer_str` to a short explanation of the chart.
-6. DO NOT call plt.show().
-7. The LAST line of the script MUST be exactly:
+   - Do NOT produce horizontal bar charts.
+   - Do NOT rotate axes or flip coordinates.
+   - Bar charts must be standard vertical bars only.
+7. DO NOT call plt.show().
+8. The LAST line of the script MUST be exactly:
    answer_str
    (so that evaluating the script returns the value of answer_str).
+9. When using statsmodels (e.g., ExponentialSmoothing or ARIMA) for
+   forecasting, you MUST first check how many data points you have for
+   each time series. Only use a seasonal component if there are at least
+   2 * seasonal_periods observations. Otherwise, fit a **non-seasonal**
+   model (no seasonal argument) or fall back to a simple trend-only
+   model. Never let the code crash due to too few data points.
 """
 
 class AgentState(TypedDict):
@@ -85,9 +123,8 @@ def _run_code_in_repl(code: str) -> str:
     has pl, pd, plt, sm, Prophet, and run_sql_pl available.
 
     Returns the string value of answer_str if present, otherwise any
-    printed output, or an error message.
+    printed output, or an error message including the generated code.
     """
-    # Namespace with our tools & libs
     ns = {
         "pl": pl,
         "pd": pd,
@@ -98,15 +135,33 @@ def _run_code_in_repl(code: str) -> str:
     }
 
     try:
-        # We'll capture the value of answer_str after exec
         exec(code, ns)
+
+        # --- NEW: ensure there is a chart.png for the UI to display ---
+        try:
+            if not os.path.exists("chart.png"):
+                pngs = [f for f in glob.glob("*.png") if not f.startswith("._")]
+                if pngs:
+                    latest = max(pngs, key=os.path.getmtime)
+                    if latest != "chart.png":
+                        # copy or rename the most recent plot to chart.png
+                        from shutil import copyfile
+                        copyfile(latest, "chart.png")
+        except Exception:
+            # If anything goes wrong here, just ignore – it's a best-effort step
+            pass
+        # -----------------------------------------------------------------
 
         if "answer_str" in ns and ns["answer_str"] is not None:
             return str(ns["answer_str"])
 
         return "Code executed successfully, but no `answer_str` was set."
     except Exception as e:
-        return f"Error while executing generated code: {e}"
+        return (
+            f"Error while executing generated code: {e}\n\n"
+            f"Generated code was:\n\n{code}"
+        )
+
 
 
 def build_graph():

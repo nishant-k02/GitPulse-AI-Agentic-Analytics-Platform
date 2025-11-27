@@ -1,20 +1,24 @@
 import polars as pl
-from langchain_experimental.tools.python.tool import PythonREPLTool
 from sqlalchemy import text
 
 from src.db.connection import get_engine
+from langchain_experimental.tools.python.tool import PythonREPLTool
 
-python_repl_tool = PythonREPLTool()  # not used now but fine to keep
+python_repl_tool = PythonREPLTool()  # fine to keep even if unused
 
 
 def run_sql_pl(query: str) -> pl.DataFrame:
+    """
+    Run a SQL query against Postgres and return the result as a Polars DataFrame.
+    """
     engine = get_engine()
     with engine.connect() as conn:
         result = conn.execute(text(query))
         rows = result.fetchall()
-        cols = result.keys()
 
     if not rows:
         return pl.DataFrame()
 
-    return pl.DataFrame(rows, schema=list(cols))
+    # Convert each SQLAlchemy row to a dict of column -> value
+    dict_rows = [dict(r._mapping) for r in rows]
+    return pl.DataFrame(dict_rows)
