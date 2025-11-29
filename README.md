@@ -148,4 +148,5 @@ You should now see (venv) at the start of your shell prompt.
 - See the output at below url:
 
     `Local URL: http://localhost:8501`
+    
     `Network URL: http://192.168.x.x:8501`
