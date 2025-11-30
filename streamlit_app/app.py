@@ -5,14 +5,22 @@ from pathlib import Path
 
 # --- Make `src` importable so we can do `from agentic import ...` ---
 THIS_FILE = os.path.abspath(__file__)
-STREAMLIT_DIR = os.path.dirname(THIS_FILE)        # .../Bonus Assignment 1/src/streamlit_app
-SRC_DIR = os.path.dirname(STREAMLIT_DIR)          # .../Bonus Assignment 1/src
+STREAMLIT_DIR = os.path.dirname(THIS_FILE)        # .../src/streamlit_app
+SRC_DIR = os.path.dirname(STREAMLIT_DIR)          # .../src
 
 if SRC_DIR not in sys.path:
     sys.path.insert(0, SRC_DIR)
 
 import streamlit as st
+
+# ---- Ensure OPENAI_API_KEY is available (local env OR Streamlit secrets) ----
+if "OPENAI_API_KEY" not in os.environ:
+    # This will work on Streamlit Cloud where you set the secret
+    if "OPENAI_API_KEY" in st.secrets:
+        os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+
 from agentic.workflow import build_graph
+
 
 
 # ------------------ Streamlit page config ------------------
