@@ -29,4 +29,6 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 PG_DSN = (
     f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}"
     f"@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+    "?sslmode=require"
 )
+

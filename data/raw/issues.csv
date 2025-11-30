@@ -814,7 +814,6 @@ id,repo_full_name,number,state,created_at,closed_at,is_pull_request
 3471892448,ollama/ollama,12465,closed,2025-10-01T03:47:08Z,2025-10-01T17:59:57Z,false
 3471866040,ollama/ollama,12464,closed,2025-10-01T03:27:45Z,2025-10-26T23:54:10Z,false
 3471680528,ollama/ollama,12463,closed,2025-10-01T01:48:46Z,2025-10-20T21:13:45Z,false
-3471482278,ollama/ollama,12462,closed,2025-10-01T00:15:43Z,2025-10-01T00:22:28Z,true
 3471197176,ollama/ollama,12461,closed,2025-09-30T22:03:33Z,2025-10-01T02:47:44Z,true
 3471133410,ollama/ollama,12460,closed,2025-09-30T21:32:36Z,2025-10-09T02:13:38Z,true
 3470971441,ollama/ollama,12459,closed,2025-09-30T20:26:02Z,2025-10-01T23:33:43Z,false
@@ -943,7 +942,6 @@ id,repo_full_name,number,state,created_at,closed_at,is_pull_request
 3338569311,ollama/ollama,11991,open,2025-08-20T15:22:03Z,,false
 3337293709,ollama/ollama,11981,closed,2025-08-20T09:21:38Z,2025-11-06T06:48:43Z,true
 3336082586,ollama/ollama,11972,open,2025-08-20T00:04:10Z,,false
-3334248081,ollama/ollama,11965,open,2025-08-19T12:45:31Z,,false
 3327271101,ollama/ollama,11939,closed,2025-08-16T13:15:31Z,2025-08-21T19:39:08Z,false
 3327182852,ollama/ollama,11937,open,2025-08-16T11:17:52Z,,false
 3326829727,ollama/ollama,11931,open,2025-08-16T03:45:30Z,,false
@@ -959,7 +957,6 @@ id,repo_full_name,number,state,created_at,closed_at,is_pull_request
 3309543603,ollama/ollama,11854,open,2025-08-11T11:07:04Z,,false
 3309158726,ollama/ollama,11850,open,2025-08-11T09:16:01Z,,false
 3308093147,ollama/ollama,11847,open,2025-08-10T23:56:34Z,,false
-3308026759,ollama/ollama,11846,open,2025-08-10T22:19:29Z,,false
 3307629135,ollama/ollama,11845,closed,2025-08-10T14:33:18Z,2025-11-05T20:44:25Z,true
 3307090976,ollama/ollama,11837,closed,2025-08-10T02:19:35Z,2025-11-02T23:55:57Z,true
 3306774968,ollama/ollama,11835,closed,2025-08-09T20:01:39Z,2025-10-14T17:59:58Z,true
@@ -1560,7 +1557,6 @@ id,repo_full_name,number,state,created_at,closed_at,is_pull_request
 3475089263,langchain-ai/langgraph,6234,open,2025-10-01T20:56:55Z,,true
 3471751516,langchain-ai/langgraph,6233,closed,2025-10-01T02:20:45Z,2025-10-03T16:06:59Z,true
 3471452638,langchain-ai/langgraph,6232,closed,2025-10-01T00:03:11Z,2025-11-07T12:48:48Z,true
-3471449503,langchain-ai/langgraph,6231,closed,2025-10-01T00:02:04Z,2025-10-01T00:08:08Z,true
 3471050294,langchain-ai/langgraph,6228,closed,2025-09-30T20:57:23Z,2025-10-16T12:02:32Z,true
 3470421284,langchain-ai/langgraph,6226,closed,2025-09-30T17:35:47Z,2025-10-16T11:04:00Z,true
 3467629849,langchain-ai/langgraph,6224,closed,2025-09-30T05:28:51Z,2025-11-07T10:53:47Z,false
@@ -1750,6 +1746,7 @@ id,repo_full_name,number,state,created_at,closed_at,is_pull_request
 3480621410,openai/openai-cookbook,2174,closed,2025-10-03T10:31:58Z,2025-10-03T19:39:29Z,true
 3480338664,openai/openai-cookbook,2173,closed,2025-10-03T08:51:03Z,2025-10-03T16:11:17Z,true
 3478559929,openai/openai-cookbook,2172,closed,2025-10-02T18:50:01Z,2025-10-02T19:08:27Z,true
+3468108980,openai/openai-cookbook,2167,open,2025-09-30T08:14:20Z,,true
 3466702199,openai/openai-cookbook,2166,open,2025-09-29T21:37:16Z,,false
 3465771945,openai/openai-cookbook,2165,closed,2025-09-29T16:37:06Z,2025-10-02T15:40:48Z,true
 3459684189,openai/openai-cookbook,2164,closed,2025-09-27T04:00:05Z,2025-11-02T09:57:25Z,true
@@ -1757,7 +1754,7 @@ id,repo_full_name,number,state,created_at,closed_at,is_pull_request
 3445805914,openai/openai-cookbook,2159,open,2025-09-23T15:41:32Z,,false
 3445747471,openai/openai-cookbook,2158,open,2025-09-23T15:25:17Z,,false
 3436996374,openai/openai-cookbook,2154,open,2025-09-20T10:11:27Z,,false
-3435763147,openai/openai-cookbook,2153,open,2025-09-19T20:08:55Z,,false
+3435763147,openai/openai-cookbook,2153,closed,2025-09-19T20:08:55Z,2025-11-30T02:16:36Z,false
 3428042863,openai/openai-cookbook,2150,closed,2025-09-17T23:17:00Z,2025-11-28T02:11:01Z,false
 3425061682,openai/openai-cookbook,2146,closed,2025-09-17T07:35:30Z,2025-11-28T02:11:03Z,false
 3417746814,openai/openai-cookbook,2142,open,2025-09-15T12:26:18Z,,true
