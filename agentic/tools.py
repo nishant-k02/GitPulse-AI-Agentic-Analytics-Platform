@@ -1,7 +1,7 @@
 import polars as pl
 from sqlalchemy import text
 
-from src.db.connection import get_engine
+from db.connection import get_engine
 from langchain_experimental.tools.python.tool import PythonREPLTool
 
 python_repl_tool = PythonREPLTool()  # fine to keep even if unused

@@ -14,7 +14,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langgraph.graph import START, END, StateGraph
 
-from src.agentic.tools import run_sql_pl
+from agentic.tools import run_sql_pl
 
 SYSTEM_PROMPT = """
 You are a senior data analyst working with GitHub repository statistics
@@ -22,7 +22,7 @@ stored in a PostgreSQL database.
 
 You have access to a helper function:
 
-    from src.agentic.tools import run_sql_pl
+    from agentic.tools import run_sql_pl
     df = run_sql_pl("<SQL query>")
 
 which returns a Polars DataFrame for a given SQL query.
@@ -64,7 +64,7 @@ When the user asks a question, you MUST:
    - import matplotlib.pyplot as plt
    - from prophet import Prophet
    - import statsmodels.api as sm
-   - from src.agentic.tools import run_sql_pl
+   - from agentic.tools import run_sql_pl
 3. Use run_sql_pl() for all SQL queries.
 4. You can write any additional helper functions inside the code, but:
    - Do NOT include plain-English headings like "Query to get ..." as bare

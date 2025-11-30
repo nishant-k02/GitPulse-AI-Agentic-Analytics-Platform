@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
-from src.config import PG_DSN
+from config import PG_DSN
 
 _engine: Engine | None = None
 

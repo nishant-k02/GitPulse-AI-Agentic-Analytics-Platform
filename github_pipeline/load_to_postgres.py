@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 from sqlalchemy import text
 
-from src.db.connection import get_engine, init_db
+from db.connection import get_engine, init_db
 
 RAW_DIR = Path(__file__).parents[1] / "data" / "raw"
 

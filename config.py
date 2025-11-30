@@ -17,11 +17,11 @@ SINCE_DATE = (datetime.utcnow() - timedelta(days=DAYS_BACK)).isoformat() + "Z"
 # Environment variables (set these in your shell)
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 
-POSTGRES_DB = os.getenv("BA1_PG_DB", "")
-POSTGRES_USER = os.getenv("BA1_PG_USER", "")
-POSTGRES_PASSWORD = os.getenv("BA1_PG_PASSWORD", "")
-POSTGRES_HOST = os.getenv("BA1_PG_HOST", "")
-POSTGRES_PORT = int(os.getenv("BA1_PG_PORT", ""))
+POSTGRES_DB = os.getenv("BA1_PG_DB", "bonus_db")
+POSTGRES_USER = os.getenv("BA1_PG_USER", "bonus_user")
+POSTGRES_PASSWORD = os.getenv("BA1_PG_PASSWORD", "bonus_pass")
+POSTGRES_HOST = os.getenv("BA1_PG_HOST", "localhost")
+POSTGRES_PORT = int(os.getenv("BA1_PG_PORT", "5432"))
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 PG_DSN = (

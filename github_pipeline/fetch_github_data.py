@@ -4,7 +4,7 @@ from pathlib import Path
 import polars as pl
 import requests
 
-from src.config import GITHUB_TOKEN, GITHUB_REPOS, SINCE_DATE
+from config import GITHUB_TOKEN, GITHUB_REPOS, SINCE_DATE
 
 # ------------------------
 # Paths & constants

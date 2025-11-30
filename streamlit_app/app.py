@@ -3,15 +3,17 @@ import sys
 import re
 from pathlib import Path
 
+# --- Make `src` importable so we can do `from agentic import ...` ---
 THIS_FILE = os.path.abspath(__file__)
-SRC_DIR = os.path.dirname(os.path.dirname(THIS_FILE))
-PROJECT_ROOT = os.path.dirname(SRC_DIR)
+STREAMLIT_DIR = os.path.dirname(THIS_FILE)        # .../Bonus Assignment 1/src/streamlit_app
+SRC_DIR = os.path.dirname(STREAMLIT_DIR)          # .../Bonus Assignment 1/src
 
-if PROJECT_ROOT not in sys.path:
-    sys.path.insert(0, PROJECT_ROOT)
+if SRC_DIR not in sys.path:
+    sys.path.insert(0, SRC_DIR)
 
 import streamlit as st
-from src.agentic.workflow import build_graph
+from agentic.workflow import build_graph
+
 
 # ------------------ Streamlit page config ------------------
 
