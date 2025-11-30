@@ -24,6 +24,8 @@ POSTGRES_HOST = os.getenv("BA1_PG_HOST", "localhost")
 POSTGRES_PORT = int(os.getenv("BA1_PG_PORT", "5432"))
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+
+# Convenience DSN
 PG_DSN = (
     f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}"
     f"@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
