@@ -4,6 +4,7 @@ python-dotenv==1.0.1
 # Data & CSV
 polars==1.7.1
 pandas==2.2.3
+tabulate>=0.9
 
 # GitHub + HTTP
 requests==2.32.3
