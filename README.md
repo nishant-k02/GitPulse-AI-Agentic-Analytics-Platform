@@ -1,4 +1,4 @@
-# GitHub Agentic Analytics – Bonus Assignment 1
+# GitPulse - An AI Agentic Analytics Platform  
 
 This project implements an **agentic, LLM-driven analytics system** over GitHub repository statistics stored in **PostgreSQL**.  
 You can:
